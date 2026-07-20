@@ -1,42 +1,19 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
 
 export default function LoginPage() {
-  const [loading, setLoading] = useState(false)
+  const [csrfToken, setCsrfToken] = useState("")
   const [error, setError] = useState("")
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setLoading(true)
-    setError("")
-
-    const form = new FormData(e.currentTarget)
-    const email = form.get("email") as string
-    const password = form.get("password") as string
-
-    // Fetch CSRF token
-    const csrfRes = await fetch("/api/auth/csrf")
-    const { csrfToken } = await csrfRes.json()
-
-    // Login via direct form POST
-    const loginRes = await fetch("/api/auth/callback/credentials", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ csrfToken, email, password, callbackUrl: window.location.href }),
-    })
-
-    if (loginRes.redirected || loginRes.status === 302) {
-      window.location.href = "/admin"
-    } else {
-      setError("Email atau password salah")
-      setLoading(false)
-    }
-  }
+  useEffect(() => {
+    fetch("/api/auth/csrf").then(r => r.json()).then(d => setCsrfToken(d.csrfToken)).catch(() => {})
+    if (window.location.search.includes("error")) setError("Email atau password salah")
+  }, [])
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 gradient-bg">
@@ -55,19 +32,15 @@ export default function LoginPage() {
           <p className="text-sm text-muted-foreground">Masuk ke akun WarnaStudio Anda</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form action="/api/auth/callback/credentials" method="POST" className="space-y-4">
+          <input type="hidden" name="csrfToken" value={csrfToken} />
+          <input type="hidden" name="callbackUrl" value="/admin" />
           <Input label="Email" id="email" name="email" type="email" placeholder="admin@warnastudio.com" required />
           <Input label="Password" id="password" name="password" type="password" placeholder="••••••••" required />
-          
-          {error && (
-            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-500">
-              {error}
-            </div>
-          )}
 
-          <Button type="submit" variant="primary" size="lg" className="w-full" loading={loading}>
-            Masuk
-          </Button>
+          {error && <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-500">{error}</div>}
+
+          <Button type="submit" variant="primary" size="lg" className="w-full">Masuk</Button>
         </form>
 
         <p className="text-center text-sm text-muted-foreground mt-6">
