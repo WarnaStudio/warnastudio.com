@@ -6,7 +6,6 @@ import type { NextAuthOptions } from "next-auth"
 import type { User as NextAuthUser } from "next-auth"
 
 export const authOptions: NextAuthOptions = {
-  trustHost: true,
   providers: [
     Credentials({
       credentials: {
