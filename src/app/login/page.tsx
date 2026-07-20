@@ -1,15 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { signIn } from "next-auth/react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card } from "@/components/ui/card"
 
 export default function LoginPage() {
-  const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
@@ -19,18 +16,25 @@ export default function LoginPage() {
     setError("")
 
     const form = new FormData(e.currentTarget)
-    const result = await signIn("credentials", {
-      email: form.get("email") as string,
-      password: form.get("password") as string,
-      redirect: false,
+    const email = form.get("email") as string
+    const password = form.get("password") as string
+
+    // Fetch CSRF token
+    const csrfRes = await fetch("/api/auth/csrf")
+    const { csrfToken } = await csrfRes.json()
+
+    // Login via direct form POST
+    const loginRes = await fetch("/api/auth/callback/credentials", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ csrfToken, email, password, callbackUrl: window.location.href }),
     })
 
-    if (result?.error) {
+    if (loginRes.redirected || loginRes.status === 302) {
+      window.location.href = "/admin"
+    } else {
       setError("Email atau password salah")
       setLoading(false)
-    } else {
-      router.push("/")
-      router.refresh()
     }
   }
 
