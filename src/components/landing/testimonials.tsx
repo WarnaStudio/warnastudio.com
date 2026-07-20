@@ -5,7 +5,7 @@ import { Quote } from "lucide-react"
 import { Card } from "@/components/ui/card"
 
 const testimonials = [
-  { name: "Ahmad Rizki", role: "CEO, TechCorp", content: "WarnaStudio memberikan hasil yang超出 ekspektasi. AI automation yang mereka buat menghemat 60% waktu operasional kami.", rating: 5 },
+  { name: "Ahmad Rizki", role: "CEO, TechCorp", content: "WarnaStudio memberikan hasil yang melampaui ekspektasi. AI automation yang mereka buat menghemat 60% waktu operasional kami.", rating: 5 },
   { name: "Sinta Dewi", role: "Founder, Creativo", content: "Film company profile yang dibuat benar-benar cinematic. Banyak klien kagum setelah menontonnya.", rating: 5 },
   { name: "Bambang Hartono", role: "Manager, EduFund", content: "Platform kursus online yang dibangun sangat intuitif. Siswa kami betah belajar berjam-jam.", rating: 5 },
   { name: "Dian Permata", role: "Marketing Director", content: "Campaign iklan digital mereka menghasilkan conversion rate 3x lipat dari sebelumnya.", rating: 5 },
