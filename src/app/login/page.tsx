@@ -40,7 +40,7 @@ export default function LoginPage() {
 
           {error && <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-500">{error}</div>}
 
-          <Button type="submit" variant="primary" size="lg" className="w-full">Masuk</Button>
+          <Button type="submit" variant="primary" size="lg" className="w-full" disabled={!csrfToken}>Masuk</Button>
         </form>
 
         <p className="text-center text-sm text-muted-foreground mt-6">
