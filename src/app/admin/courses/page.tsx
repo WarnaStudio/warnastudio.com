@@ -34,7 +34,7 @@ export default async function CoursesAdmin() {
             <tbody>
               {courses.map((c) => (
                 <tr key={c.id} className="border-b border-border/50 hover:bg-muted/20">
-                  <td className="p-4 font-medium">{c.title}</td>
+                  <td className="p-4 font-medium"><Link href={`/admin/courses/${c.slug}/edit`} className="hover:text-violet-400 transition-colors">{c.title}</Link></td>
                   <td className="p-4 text-muted-foreground">{c.category || "-"}</td>
                   <td className="p-4 text-muted-foreground">{c.price === 0 ? "Free" : `Rp ${(c.price / 1000).toFixed(0)}rb`}</td>
                   <td className="p-4 text-muted-foreground">{c._count.modules}</td>
