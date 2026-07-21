@@ -16,7 +16,7 @@ export default async function CoursesAdmin() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold">Courses</h1>
-        <Button variant="primary" size="sm">+ Add Course</Button>
+        <Link href="/admin/courses/create"><Button variant="primary" size="sm">+ Add Course</Button></Link>
       </div>
       <Card className="glass overflow-hidden">
         <div className="overflow-x-auto">
