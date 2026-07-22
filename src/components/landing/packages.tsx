@@ -9,9 +9,8 @@ import { VideoCard } from "@/components/ui/video-card"
 export function Packages() {
   return (
     <section id="packages" className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 opacity-30">
-        <VideoCard src={siteContent.videos.campaign} className="absolute inset-0" overlay={false} />
-        <div className="absolute inset-0 bg-[#050507]/88" />
+      <div className="absolute inset-0">
+        <VideoCard src={siteContent.videos.campaign} dim={48} />
       </div>
 
       <div className="relative max-w-[1400px] mx-auto px-5 sm:px-8">

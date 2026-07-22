@@ -19,13 +19,14 @@ export function Marquee() {
     <section className="relative border-y border-white/10 overflow-hidden py-5">
       <video
         src={siteContent.videos.ai}
-        className="absolute inset-0 w-full h-full object-cover opacity-35"
+        poster="/videos/ai.jpg"
+        className="absolute inset-0 w-full h-full object-cover"
         muted
         loop
         playsInline
         autoPlay
       />
-      <div className="absolute inset-0 bg-black/70" />
+      <div className="absolute inset-0 bg-black/50" />
       <div className="ws-marquee relative flex whitespace-nowrap">
         {row.map((t, i) => (
           <span

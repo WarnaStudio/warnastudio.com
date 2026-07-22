@@ -47,10 +47,8 @@ export function Statement() {
 
   return (
     <section ref={ref} className="relative py-32 lg:py-44 overflow-hidden min-h-[70vh] flex items-center">
-      <VideoCard src={siteContent.videos.film} className="absolute inset-0" overlay={false} />
-      <div className="absolute inset-0 bg-[#050507]/75" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.18),transparent_55%)]" />
-      <div className="ws-grain absolute inset-0 pointer-events-none opacity-20" />
+      <VideoCard src={siteContent.videos.film} dim={40} className="!absolute !inset-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.12),transparent_55%)] pointer-events-none" />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-[11px] tracking-[0.3em] uppercase text-amber-300 mb-8">Manifesto</p>

@@ -36,15 +36,12 @@ export function Hero() {
 
   return (
     <section ref={root} className="relative min-h-[100svh] overflow-hidden bg-[#050507]">
-      {/* Layer 1: WebGL */}
-      <div className="absolute inset-0 opacity-90">
-        <HeroScene />
-      </div>
-      {/* Layer 2: cinematic video veil */}
-      <div className="absolute inset-0 mix-blend-screen opacity-40">
+      {/* Video base — always visible */}
+      <div className="absolute inset-0">
         <video
           ref={videoRef}
           src={siteContent.videos.showreel}
+          poster="/videos/showreel.jpg"
           className="w-full h-full object-cover"
           muted
           loop
@@ -53,9 +50,13 @@ export function Hero() {
           preload="auto"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-[#050507] via-[#050507]/85 to-[#050507]/35" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-[#050507]/60" />
-      <div className="ws-grain absolute inset-0 pointer-events-none opacity-[0.16]" />
+      {/* WebGL accent layer */}
+      <div className="absolute inset-0 opacity-55 mix-blend-lighten">
+        <HeroScene />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050507]/90 via-[#050507]/55 to-[#050507]/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050507]/95 via-transparent to-[#050507]/40" />
+      <div className="ws-grain absolute inset-0 pointer-events-none opacity-[0.12]" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 min-h-[100svh] flex flex-col justify-end pb-16 sm:pb-20 pt-28">
         <div className="max-w-4xl">

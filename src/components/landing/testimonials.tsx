@@ -32,9 +32,6 @@ const items = [
 export function Testimonials() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
-      <VideoCard src={siteContent.videos.showreel} className="absolute inset-0 opacity-25" overlay={false} />
-      <div className="absolute inset-0 bg-[#050507]/90" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-xl mb-12">
           <p className="text-amber-400/90 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
@@ -56,15 +53,14 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.07 }}
-              className="relative rounded-2xl border border-white/12 overflow-hidden min-h-[340px] flex flex-col"
+              className="relative rounded-2xl border border-white/12 overflow-hidden min-h-[360px] flex flex-col"
             >
-              <VideoCard src={t.video} className="absolute inset-0" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
-              <div className="relative mt-auto p-6">
-                <Quote className="w-7 h-7 text-amber-400/50 mb-4" />
-                <p className="text-sm text-zinc-200 leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-                <p className="text-sm font-semibold text-zinc-50">{t.name}</p>
-                <p className="text-xs text-amber-200/70">{t.role}</p>
+              <VideoCard src={t.video} dim={34} />
+              <div className="relative z-10 mt-auto p-6">
+                <Quote className="w-7 h-7 text-amber-300/80 mb-4 drop-shadow" />
+                <p className="text-sm text-zinc-50 leading-relaxed mb-6 drop-shadow-md">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-sm font-semibold text-white">{t.name}</p>
+                <p className="text-xs text-amber-200">{t.role}</p>
               </div>
             </motion.div>
           ))}

@@ -11,10 +11,8 @@ export function CTA() {
     <section className="py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden border border-amber-500/25 min-h-[420px] flex items-center justify-center text-center">
-          <VideoCard src={siteContent.videos.campaign} className="absolute inset-0" overlay={false} priority />
-          <div className="absolute inset-0 bg-[#050507]/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.25),transparent_60%)]" />
-          <div className="ws-grain absolute inset-0 pointer-events-none opacity-20" />
+          <VideoCard src={siteContent.videos.campaign} dim={45} priority />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.2),transparent_60%)] pointer-events-none" />
 
           <div className="relative max-w-2xl mx-auto px-6 py-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-50 mb-4 tracking-tight drop-shadow-lg">

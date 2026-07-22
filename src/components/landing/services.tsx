@@ -24,8 +24,7 @@ export function Services() {
             data-cursor="hover"
             className="group relative min-h-[70vh] sm:min-h-[80vh] border-t border-white/10 overflow-hidden"
           >
-            <VideoCard src={s.video} className="absolute inset-0" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-colors duration-500" />
+            <VideoCard src={s.video} dim={28} className="!absolute !inset-0" />
             <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 h-full min-h-[70vh] sm:min-h-[80vh] flex flex-col justify-end pb-12 sm:pb-16">
               <div className="flex items-end justify-between gap-6">
                 <div className="max-w-2xl">

@@ -14,9 +14,6 @@ const steps = [
 export function Process() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
-      <VideoCard src={siteContent.videos.campaign} className="absolute inset-0 opacity-30" overlay={false} />
-      <div className="absolute inset-0 bg-[#050507]/88" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-xl mb-12">
           <p className="text-amber-400/90 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
@@ -34,14 +31,13 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.06 }}
-              className="relative rounded-2xl border border-white/12 overflow-hidden min-h-[260px] group"
+              className="relative rounded-2xl border border-white/12 overflow-hidden min-h-[280px] group"
             >
-              <VideoCard src={s.video} className="absolute inset-0" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/30" />
-              <div className="relative p-5 h-full flex flex-col justify-end">
-                <div className="text-amber-300 font-mono text-sm mb-2">{s.n}</div>
-                <h3 className="font-semibold text-zinc-50 text-lg mb-1.5">{s.title}</h3>
-                <p className="text-sm text-zinc-300 leading-relaxed">{s.desc}</p>
+              <VideoCard src={s.video} dim={30} />
+              <div className="relative z-10 p-5 min-h-[280px] flex flex-col justify-end">
+                <div className="text-amber-300 font-mono text-sm mb-2 drop-shadow">{s.n}</div>
+                <h3 className="font-semibold text-zinc-50 text-lg mb-1.5 drop-shadow">{s.title}</h3>
+                <p className="text-sm text-zinc-100/90 leading-relaxed drop-shadow">{s.desc}</p>
               </div>
             </motion.div>
           ))}
