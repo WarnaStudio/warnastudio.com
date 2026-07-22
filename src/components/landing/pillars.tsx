@@ -34,16 +34,18 @@ const pillars = [
 
 export function Pillars() {
   return (
-    <section id="pillars" className="py-20 lg:py-28 border-t border-white/[0.04]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pillars" className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(180,120,20,0.08),transparent_60%)]" />
+      <div className="ws-section-line absolute top-0 left-0 right-0" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12 lg:mb-16">
           <p className="text-amber-400/90 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
             Ekosistem
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight mb-4">
             Tiga pilar <span className="gradient-text">WarnaStudio</span>
           </h2>
-          <p className="text-zinc-400 leading-relaxed">
+          <p className="text-zinc-400 leading-relaxed text-lg">
             Bukan sekadar “jasa kreatif”. Kami bangun rantai lengkap: dikerjakanin, diajari, dan diberi aset.
           </p>
         </div>
