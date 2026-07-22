@@ -221,3 +221,12 @@ html.has-custom-cursor [data-cursor="hover"] {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.35), transparent);
 }
+
+.ws-marquee {
+  animation: ws-marquee 32s linear infinite;
+}
+
+@keyframes ws-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

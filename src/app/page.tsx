@@ -1,4 +1,6 @@
 import { Hero } from "@/components/landing/hero"
+import { Marquee } from "@/components/landing/marquee"
+import { Statement } from "@/components/landing/statement"
 import { Pillars } from "@/components/landing/pillars"
 import { Services } from "@/components/landing/services"
 import { Packages } from "@/components/landing/packages"
@@ -12,25 +14,25 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Marquee />
+      <Statement />
       <Reveal>
         <Pillars />
       </Reveal>
-      <Reveal delay={0.05}>
+      <Reveal delay={0.04}>
         <Services />
       </Reveal>
       <Reveal>
         <Packages />
       </Reveal>
-      <Reveal delay={0.05}>
+      <Reveal delay={0.04}>
         <Process />
       </Reveal>
+      <Portfolio />
       <Reveal>
-        <Portfolio />
-      </Reveal>
-      <Reveal delay={0.05}>
         <Testimonials />
       </Reveal>
-      <Reveal>
+      <Reveal delay={0.04}>
         <CTA />
       </Reveal>
     </>
