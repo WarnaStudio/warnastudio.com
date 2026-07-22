@@ -1,0 +1,11 @@
+﻿{
+  "note": "Ganti file di public/videos/ dengan video asli WarnaStudio. Nama file jangan diubah agar landing tetap jalan.",
+  "files": {
+    "showreel.mp4": "Hero / showreel utama",
+    "ads.mp4": "Layanan iklan short",
+    "film.mp4": "Produksi film",
+    "ai.mp4": "AI pipeline",
+    "course.mp4": "Kursus",
+    "campaign.mp4": "Campaign / retainer"
+  }
+}

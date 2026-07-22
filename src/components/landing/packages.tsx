@@ -1,102 +1,60 @@
 "use client"
 
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-const packages = [
-  {
-    name: "Starter Ads",
-    price: "Mulai dari",
-    highlight: "3 short siap upload",
-    features: ["Brief + riset angle", "3 video vertical", "Subtitle & packing", "2x revisi"],
-    popular: false,
-  },
-  {
-    name: "Campaign",
-    price: "Paling dipilih",
-    highlight: "10 short + 1 long",
-    features: [
-      "Strategi hook & CTA",
-      "10 short + 1 long-form",
-      "Variasi caption",
-      "Prioritas slot produksi",
-      "3x revisi",
-    ],
-    popular: true,
-  },
-  {
-    name: "Retainer",
-    price: "Bulanan",
-    highlight: "Output konsisten",
-    features: [
-      "Kuota konten per bulan",
-      "Kalender konten",
-      "Revisi sesuai paket",
-      "Sync brand guide",
-      "Support prioritas",
-    ],
-    popular: false,
-  },
-]
+import { siteContent } from "@/lib/content"
+import { VideoCard } from "@/components/ui/video-card"
 
 export function Packages() {
   return (
-    <section id="packages" className="py-20 lg:py-28 border-t border-white/[0.04] bg-zinc-950/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
-          <p className="text-amber-400/90 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
-            Paket jasa
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
-            Pilih jalur yang <span className="gradient-text">jelas</span>
+    <section id="packages" className="relative py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 opacity-30">
+        <VideoCard src={siteContent.videos.campaign} className="absolute inset-0" overlay={false} />
+        <div className="absolute inset-0 bg-[#050507]/88" />
+      </div>
+
+      <div className="relative max-w-[1400px] mx-auto px-5 sm:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <p className="text-[11px] tracking-[0.3em] uppercase text-amber-400/90 mb-3">Paket</p>
+          <h2 className="text-4xl sm:text-6xl font-bold tracking-tight mb-4">
+            Pilih intensitas <span className="gradient-text">produksi</span>
           </h2>
-          <p className="text-zinc-400">
-            Harga final menyesuaikan brief. Mulai dari konsultasi — tanpa komitmen panjang.
-          </p>
+          <p className="text-zinc-400">Harga final menyesuaikan brief. Mulai dari konsultasi.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-          {packages.map((pkg, idx) => (
-            <motion.div
+          {siteContent.packages.map((pkg) => (
+            <div
               key={pkg.name}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.08 }}
-              className={`relative rounded-2xl border p-6 sm:p-7 flex flex-col ${
+              className={`relative rounded-3xl border p-7 flex flex-col backdrop-blur-xl ${
                 pkg.popular
-                  ? "border-amber-500/40 bg-gradient-to-b from-amber-500/10 to-transparent shadow-[0_0_40px_-12px_rgba(212,175,55,0.35)]"
-                  : "border-white/[0.07] bg-white/[0.02]"
+                  ? "border-amber-400/50 bg-amber-400/10 shadow-[0_0_60px_-20px_rgba(245,200,80,0.45)]"
+                  : "border-white/10 bg-black/40"
               }`}
             >
               {pkg.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full bg-amber-400 text-zinc-950">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full bg-amber-300 text-zinc-950">
                   Recommended
                 </span>
               )}
-              <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">{pkg.price}</p>
-              <h3 className="text-xl font-bold text-zinc-50 mb-1">{pkg.name}</h3>
-              <p className="text-amber-200/90 text-sm font-medium mb-5">{pkg.highlight}</p>
+              <p className="text-xs text-zinc-500 uppercase tracking-wider mb-1">{pkg.tag}</p>
+              <h3 className="text-2xl font-bold text-zinc-50 mb-1">{pkg.name}</h3>
+              <p className="text-amber-200 text-sm font-medium mb-6">{pkg.highlight}</p>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {pkg.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-zinc-400">
+                  <li key={f} className="flex items-start gap-2 text-sm text-zinc-300">
                     <Check className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                     {f}
                   </li>
                 ))}
               </ul>
-              <Link href="/contact" className="block">
-                <Button
-                  variant={pkg.popular ? "primary" : "outline"}
-                  className="w-full"
-                  size="lg"
-                >
+              <Link href="/contact" data-cursor="hover">
+                <Button variant={pkg.popular ? "primary" : "outline"} className="w-full" size="lg">
                   Diskusikan paket
                 </Button>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

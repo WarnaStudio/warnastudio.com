@@ -16,23 +16,19 @@ export default function HomePage() {
       <Hero />
       <Marquee />
       <Statement />
+      <Services />
       <Reveal>
         <Pillars />
       </Reveal>
-      <Reveal delay={0.04}>
-        <Services />
-      </Reveal>
+      <Packages />
       <Reveal>
-        <Packages />
-      </Reveal>
-      <Reveal delay={0.04}>
         <Process />
       </Reveal>
       <Portfolio />
       <Reveal>
         <Testimonials />
       </Reveal>
-      <Reveal delay={0.04}>
+      <Reveal>
         <CTA />
       </Reveal>
     </>

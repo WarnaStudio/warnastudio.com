@@ -1,80 +1,51 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Film, Megaphone, Bot, Sparkles, BookOpen, Workflow } from "lucide-react"
-
-const services = [
-  {
-    icon: Megaphone,
-    title: "Iklan & short ads",
-    description: "Konten vertical siap Shorts/Reels/TikTok — hook kuat, subtitle rapi, brand-safe.",
-  },
-  {
-    icon: Film,
-    title: "Film & company profile",
-    description: "Narasi sinematik untuk brand, produk, atau dokumentasi bisnis.",
-  },
-  {
-    icon: Sparkles,
-    title: "AI production pipeline",
-    description: "Alur produksi dipercepat AI: riset momen, script, potong, packing deliverable.",
-  },
-  {
-    icon: Bot,
-    title: "AI automation bisnis",
-    description: "Chat, brief, dan workflow internal agar studio/UMKM tidak macet di admin.",
-  },
-  {
-    icon: BookOpen,
-    title: "Kursus produksi AI",
-    description: "Modul praktis: dari tools sampai sistem konten harian.",
-  },
-  {
-    icon: Workflow,
-    title: "Retainer konten",
-    description: "Slot bulanan untuk brand yang butuh output konsisten tanpa hire tim besar.",
-  },
-]
+import Link from "next/link"
+import { siteContent } from "@/lib/content"
+import { VideoCard } from "@/components/ui/video-card"
+import { ArrowUpRight } from "lucide-react"
 
 export function Services() {
   return (
-    <section id="services" className="py-20 lg:py-28 border-t border-white/[0.04]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-16">
-          <div className="max-w-xl">
-            <p className="text-amber-400/90 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
-              Layanan
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
-              Fokus pada yang <span className="gradient-text">menghasilkan</span>
-            </h2>
-            <p className="text-zinc-400">
-              Kami potong noise. Yang utama: konten iklan/video yang bisa dipakai jualan dan membangun brand.
-            </p>
-          </div>
-        </div>
+    <section id="services" className="relative py-8 sm:py-12">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 mb-10 sm:mb-14">
+        <p className="text-[11px] tracking-[0.3em] uppercase text-amber-400/90 mb-3">Layanan</p>
+        <h2 className="text-4xl sm:text-6xl font-bold tracking-tight max-w-3xl leading-[1.05]">
+          Yang kami kerjakan
+          <span className="gradient-text"> setiap hari</span>
+        </h2>
+      </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {services.map((service, idx) => {
-            const Icon = service.icon
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.06 }}
-                className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-6 hover:border-amber-500/25 hover:bg-amber-500/[0.04] transition-colors"
-              >
-                <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-amber-300" />
+      <div className="flex flex-col">
+        {siteContent.services.map((s, i) => (
+          <Link
+            key={s.id}
+            href="/contact"
+            data-cursor="hover"
+            className="group relative min-h-[70vh] sm:min-h-[80vh] border-t border-white/10 overflow-hidden"
+          >
+            <VideoCard src={s.video} className="absolute inset-0" />
+            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/20 transition-colors duration-500" />
+            <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 h-full min-h-[70vh] sm:min-h-[80vh] flex flex-col justify-end pb-12 sm:pb-16">
+              <div className="flex items-end justify-between gap-6">
+                <div className="max-w-2xl">
+                  <div className="text-amber-300/80 font-mono text-sm mb-3">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4 group-hover:translate-x-2 transition-transform duration-500">
+                    {s.title}
+                  </h3>
+                  <p className="text-base sm:text-lg text-zinc-300 max-w-xl leading-relaxed">
+                    {s.desc}
+                  </p>
                 </div>
-                <h3 className="text-base font-semibold text-zinc-100 mb-2">{service.title}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{service.description}</p>
-              </motion.div>
-            )
-          })}
-        </div>
+                <div className="hidden sm:flex w-14 h-14 rounded-full border border-white/30 items-center justify-center text-white group-hover:bg-amber-400 group-hover:text-black group-hover:border-amber-400 transition-all">
+                  <ArrowUpRight className="w-6 h-6" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   )

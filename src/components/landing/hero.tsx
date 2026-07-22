@@ -6,96 +6,113 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
+import { siteContent } from "@/lib/content"
 
 const HeroScene = dynamic(
   () => import("@/components/landing/hero-scene").then((m) => m.HeroScene),
   {
     ssr: false,
-    loading: () => (
-      <div className="absolute inset-0 bg-[#050507] flex items-center justify-center">
-        <div className="w-14 h-14 rounded-full border border-amber-500/20 border-t-amber-300 animate-spin" />
-      </div>
-    ),
+    loading: () => <div className="absolute inset-0 bg-[#050507]" />,
   }
 )
 
 export function Hero() {
   const root = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
-      tl.fromTo(".hero-kicker", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 })
-        .fromTo(".hero-title span", { y: 80, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.08 }, "-=0.4")
-        .fromTo(".hero-sub", { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.85 }, "-=0.55")
-        .fromTo(".hero-cta", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.08 }, "-=0.5")
-        .fromTo(".hero-meta", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6 }, "-=0.35")
+      gsap
+        .timeline({ defaults: { ease: "power4.out" } })
+        .fromTo(".h-line", { yPercent: 120 }, { yPercent: 0, duration: 1.15, stagger: 0.1 })
+        .fromTo(".h-fade", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.08 }, "-=0.55")
     }, root)
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    videoRef.current?.play().catch(() => {})
+  }, [])
+
   return (
     <section ref={root} className="relative min-h-[100svh] overflow-hidden bg-[#050507]">
-      {/* Full-bleed immersive WebGL (Active Theory / Lusion spirit) */}
-      <div className="absolute inset-0">
+      {/* Layer 1: WebGL */}
+      <div className="absolute inset-0 opacity-90">
         <HeroScene />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050507] via-[#050507]/75 to-[#050507]/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-[#050507]/50" />
-        <div className="ws-grain absolute inset-0 pointer-events-none opacity-[0.14]" />
       </div>
+      {/* Layer 2: cinematic video veil */}
+      <div className="absolute inset-0 mix-blend-screen opacity-40">
+        <video
+          ref={videoRef}
+          src={siteContent.videos.showreel}
+          className="w-full h-full object-cover"
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="auto"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050507] via-[#050507]/85 to-[#050507]/35" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-[#050507]/60" />
+      <div className="ws-grain absolute inset-0 pointer-events-none opacity-[0.16]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[100svh] flex items-center pt-24 pb-16">
-        <div className="max-w-2xl">
-          <div className="hero-kicker inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-400/25 bg-black/40 backdrop-blur-md text-[11px] sm:text-xs tracking-[0.22em] uppercase text-amber-100/90 mb-7">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse" />
-            Immersive creative technology
+      <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 min-h-[100svh] flex flex-col justify-end pb-16 sm:pb-20 pt-28">
+        <div className="max-w-4xl">
+          <div className="h-fade mb-6 inline-flex items-center gap-3 text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-amber-200/80">
+            <span className="w-8 h-px bg-amber-400/70" />
+            WarnaStudio · AI Ads & Film
           </div>
 
-          <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.98] mb-6">
+          <h1 className="text-[12vw] sm:text-[9vw] lg:text-[6.5rem] font-bold leading-[0.88] tracking-[-0.04em] text-zinc-50 mb-8">
             <span className="block overflow-hidden">
-              <span className="inline-block text-zinc-50">Buat orang</span>
+              <span className="h-line block">STOP THE</span>
             </span>
             <span className="block overflow-hidden">
-              <span className="inline-block text-zinc-50">berhenti scroll.</span>
+              <span className="h-line block gradient-text">SCROLL.</span>
             </span>
-            <span className="block overflow-hidden mt-1">
-              <span className="inline-block gradient-text">Lalu beli.</span>
+            <span className="block overflow-hidden">
+              <span className="h-line block">MAKE THEM</span>
+            </span>
+            <span className="block overflow-hidden">
+              <span className="h-line block">BUY.</span>
             </span>
           </h1>
 
-          <p className="hero-sub text-base sm:text-lg text-zinc-400/95 leading-relaxed max-w-lg mb-9">
-            WarnaStudio merancang pengalaman iklan &amp; video AI yang terasa mahal —
-            dari brief sampai short siap tayang, plus membership untuk scale konten Anda.
+          <p className="h-fade text-base sm:text-xl text-zinc-400 max-w-xl leading-relaxed mb-10">
+            Studio produksi iklan &amp; video berbasis AI — plus membership dan kursus
+            agar bisnis Anda punya mesin konten sendiri.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 mb-10">
-            <Link href="/contact" className="hero-cta" data-cursor="hover">
-              <Button variant="primary" size="lg" className="min-w-[200px] gap-2 shadow-[0_0_40px_-8px_rgba(245,200,80,0.55)]">
+          <div className="h-fade flex flex-col sm:flex-row gap-3">
+            <Link href="/contact" data-cursor="hover">
+              <Button variant="primary" size="lg" className="min-w-[210px] gap-2 text-base h-14 px-8">
                 Mulai project
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
-            <Link href="/#packages" className="hero-cta" data-cursor="hover">
-              <Button variant="glass" size="lg" className="min-w-[200px] gap-2 border-white/15 bg-black/30 backdrop-blur-md">
+            <Link href="/#works" data-cursor="hover">
+              <Button variant="glass" size="lg" className="min-w-[210px] gap-2 h-14 border-white/20 bg-black/40 backdrop-blur-md">
                 <Play className="w-4 h-4" />
-                Lihat paket
+                Tonton karya
               </Button>
             </Link>
           </div>
-
-          <div className="hero-meta flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
-            <span>WebGL experience</span>
-            <span className="text-amber-500/50">/</span>
-            <span>AI production</span>
-            <span className="text-amber-500/50">/</span>
-            <span>Membership</span>
-          </div>
         </div>
-      </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-zinc-600">
-        <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
-        <div className="w-px h-10 bg-gradient-to-b from-amber-400/70 to-transparent animate-pulse" />
+        <div className="h-fade mt-14 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-2xl overflow-hidden max-w-3xl">
+          {[
+            ["Jasa", "Iklan · Film · AI cut"],
+            ["Member", "Vault + update"],
+            ["Kursus", "Produksi AI"],
+            ["Retainer", "Konten bulanan"],
+          ].map(([a, b]) => (
+            <div key={a} className="bg-[#0a0a0e]/90 px-4 py-4 backdrop-blur-md">
+              <div className="text-amber-300 text-xs tracking-[0.2em] uppercase mb-1">{a}</div>
+              <div className="text-sm text-zinc-400">{b}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
