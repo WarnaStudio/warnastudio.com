@@ -17,7 +17,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
           {
             "bg-foreground text-background hover:opacity-90": variant === "default",
-            "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white hover:shadow-lg hover:shadow-violet-500/25": variant === "primary",
+            "bg-gradient-to-r from-amber-400 to-amber-600 text-zinc-950 font-semibold hover:shadow-lg hover:shadow-amber-500/25": variant === "primary",
             "hover:bg-muted": variant === "ghost",
             "border border-border hover:bg-muted": variant === "outline",
             "glass hover:bg-white/10": variant === "glass",

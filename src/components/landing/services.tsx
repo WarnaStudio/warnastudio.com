@@ -1,86 +1,76 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Sparkles, Film, Monitor, BookOpen, Megaphone, Bot } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import { Film, Megaphone, Bot, Sparkles, BookOpen, Workflow } from "lucide-react"
 
 const services = [
   {
-    icon: Sparkles,
-    title: "AI & Machine Learning",
-    description: "Solusi AI custom untuk automation, analisis data, dan inteligent system untuk bisnis Anda.",
-    gradient: "from-violet-500 to-purple-500",
+    icon: Megaphone,
+    title: "Iklan & short ads",
+    description: "Konten vertical siap Shorts/Reels/TikTok — hook kuat, subtitle rapi, brand-safe.",
   },
   {
     icon: Film,
-    title: "Produksi Film",
-    description: "Film komersial, dokumenter, company profile dengan standar sinematografi profesional.",
-    gradient: "from-fuchsia-500 to-pink-500",
+    title: "Film & company profile",
+    description: "Narasi sinematik untuk brand, produk, atau dokumentasi bisnis.",
   },
   {
-    icon: Megaphone,
-    title: "Iklan Digital",
-    description: "Strategi iklan multi-platform dengan AI optimization untuk ROI maksimal.",
-    gradient: "from-cyan-500 to-blue-500",
-  },
-  {
-    icon: Monitor,
-    title: "Web & App Development",
-    description: "Aplikasi web dan mobile modern dengan teknologi terkini dan UX premium.",
-    gradient: "from-emerald-500 to-teal-500",
-  },
-  {
-    icon: BookOpen,
-    title: "Kursus Online",
-    description: "Materi belajar terstruktur di bidang AI, programming, dan creative technology.",
-    gradient: "from-amber-500 to-orange-500",
+    icon: Sparkles,
+    title: "AI production pipeline",
+    description: "Alur produksi dipercepat AI: riset momen, script, potong, packing deliverable.",
   },
   {
     icon: Bot,
-    title: "AI Automation",
-    description: "Automasi workflow bisnis dengan AI chatbot, document processing, dan smart system.",
-    gradient: "from-rose-500 to-red-500",
+    title: "AI automation bisnis",
+    description: "Chat, brief, dan workflow internal agar studio/UMKM tidak macet di admin.",
+  },
+  {
+    icon: BookOpen,
+    title: "Kursus produksi AI",
+    description: "Modul praktis: dari tools sampai sistem konten harian.",
+  },
+  {
+    icon: Workflow,
+    title: "Retainer konten",
+    description: "Slot bulanan untuk brand yang butuh output konsisten tanpa hire tim besar.",
   },
 ]
 
 export function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32">
+    <section id="services" className="py-20 lg:py-28 border-t border-white/[0.04]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-muted-foreground mb-4">
-            Layanan
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-16">
+          <div className="max-w-xl">
+            <p className="text-amber-400/90 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+              Layanan
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
+              Fokus pada yang <span className="gradient-text">menghasilkan</span>
+            </h2>
+            <p className="text-zinc-400">
+              Kami potong noise. Yang utama: konten iklan/video yang bisa dipakai jualan dan membangun brand.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Solusi <span className="gradient-text">Kreatif & Teknologi</span>
-          </h2>
-          <p className="text-muted-foreground">
-            Dari konsep hingga eksekusi, kami hadirkan solusi end-to-end untuk kebutuhan digital Anda.
-          </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {services.map((service, idx) => {
             const Icon = service.icon
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ delay: idx * 0.06 }}
+                className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-6 hover:border-amber-500/25 hover:bg-amber-500/[0.04] transition-colors"
               >
-                <Card className="group p-6 hover:shadow-lg hover:shadow-violet-500/5 transition-all duration-300 cursor-default">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} p-2.5 mb-4`}>
-                    <Icon className="w-full h-full text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-violet-400 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-                </Card>
+                <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-amber-300" />
+                </div>
+                <h3 className="text-base font-semibold text-zinc-100 mb-2">{service.title}</h3>
+                <p className="text-sm text-zinc-500 leading-relaxed">{service.description}</p>
               </motion.div>
             )
           })}

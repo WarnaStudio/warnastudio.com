@@ -15,10 +15,17 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "WarnaStudio | Creative Technology Company",
+  title: "WarnaStudio | Iklan & Video AI Siap Tayang",
   description:
-    "WarnaStudio adalah creative technology company yang mengkombinasikan AI, desain, film, dan edukasi untuk menciptakan solusi digital yang impactful.",
-  keywords: ["warnastudio", "creative technology", "AI", "digital product", "film", "course"],
+    "Studio produksi iklan dan video berbasis AI — plus membership, kursus, dan produk digital untuk bisnis yang ingin scale konten.",
+  keywords: [
+    "warnastudio",
+    "iklan AI",
+    "video shorts",
+    "produksi konten",
+    "kursus AI",
+    "membership digital",
+  ],
 }
 
 export default function RootLayout({
