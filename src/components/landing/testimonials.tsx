@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion"
 import { Quote } from "lucide-react"
+import { VideoCard } from "@/components/ui/video-card"
+import { siteContent } from "@/lib/content"
 
 const items = [
   {
@@ -9,25 +11,31 @@ const items = [
       "Yang kami butuhkan bukan teori AI — tapi short iklan yang bisa langsung dipasang. Alurnya rapi dari brief sampai file.",
     name: "Klien brand",
     role: "Campaign digital",
+    video: siteContent.videos.ads,
   },
   {
     quote:
       "Membership + template bikin tim internal kami mulai produksi sendiri, tanpa harus full serah ke agency setiap minggu.",
     name: "Tim konten",
     role: "UMKM / creator",
+    video: siteContent.videos.course,
   },
   {
     quote:
       "Komunikasi jelas, paket tidak membingungkan, dan revisi terukur. Cocok untuk founder yang waktunya terbatas.",
     name: "Founder",
     role: "Jasa & produk digital",
+    video: siteContent.videos.ai,
   },
 ]
 
 export function Testimonials() {
   return (
-    <section className="py-20 lg:py-28 border-t border-white/[0.04] bg-zinc-950/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 lg:py-28 overflow-hidden">
+      <VideoCard src={siteContent.videos.showreel} className="absolute inset-0 opacity-25" overlay={false} />
+      <div className="absolute inset-0 bg-[#050507]/90" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-xl mb-12">
           <p className="text-amber-400/90 text-xs font-semibold tracking-[0.2em] uppercase mb-3">
             Social proof
@@ -35,8 +43,8 @@ export function Testimonials() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
             Arah yang kami <span className="gradient-text">kejar</span>
           </h2>
-          <p className="text-zinc-500 text-sm mt-3">
-            Kutipan arah layanan (akan diganti testimonial real seiring project selesai).
+          <p className="text-zinc-400 text-sm mt-3">
+            Kutipan arah layanan (nanti diganti testimonial real + video klien).
           </p>
         </div>
 
@@ -48,12 +56,16 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.07 }}
-              className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6"
+              className="relative rounded-2xl border border-white/12 overflow-hidden min-h-[340px] flex flex-col"
             >
-              <Quote className="w-7 h-7 text-amber-500/30 mb-4" />
-              <p className="text-sm text-zinc-400 leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-              <p className="text-sm font-semibold text-zinc-200">{t.name}</p>
-              <p className="text-xs text-zinc-500">{t.role}</p>
+              <VideoCard src={t.video} className="absolute inset-0" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
+              <div className="relative mt-auto p-6">
+                <Quote className="w-7 h-7 text-amber-400/50 mb-4" />
+                <p className="text-sm text-zinc-200 leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-sm font-semibold text-zinc-50">{t.name}</p>
+                <p className="text-xs text-amber-200/70">{t.role}</p>
+              </div>
             </motion.div>
           ))}
         </div>

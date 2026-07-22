@@ -1,5 +1,7 @@
 "use client"
 
+import { siteContent } from "@/lib/content"
+
 const items = [
   "AI Short Ads",
   "Cinematic Cut",
@@ -14,14 +16,23 @@ const items = [
 export function Marquee() {
   const row = [...items, ...items]
   return (
-    <section className="relative border-y border-white/[0.06] bg-black/40 overflow-hidden py-4">
-      <div className="ws-marquee flex whitespace-nowrap">
+    <section className="relative border-y border-white/10 overflow-hidden py-5">
+      <video
+        src={siteContent.videos.ai}
+        className="absolute inset-0 w-full h-full object-cover opacity-35"
+        muted
+        loop
+        playsInline
+        autoPlay
+      />
+      <div className="absolute inset-0 bg-black/70" />
+      <div className="ws-marquee relative flex whitespace-nowrap">
         {row.map((t, i) => (
           <span
             key={`${t}-${i}`}
-            className="mx-6 text-sm sm:text-base tracking-[0.25em] uppercase text-zinc-500 font-medium"
+            className="mx-6 text-sm sm:text-base tracking-[0.25em] uppercase text-zinc-200 font-medium"
           >
-            <span className="text-amber-400/70 mr-6">✦</span>
+            <span className="text-amber-400 mr-6">✦</span>
             {t}
           </span>
         ))}
