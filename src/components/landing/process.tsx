@@ -1,14 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { VideoCard } from "@/components/ui/video-card"
-import { siteContent } from "@/lib/content"
 
 const steps = [
-  { n: "01", title: "Brief", desc: "Isi form / chat — tujuan, audience, referensi, deadline.", video: siteContent.videos.ads },
-  { n: "02", title: "Produksi", desc: "Riset angle, script, edit AI-assisted, QC manusia.", video: siteContent.videos.ai },
-  { n: "03", title: "Preview", desc: "Anda review. Revisi sesuai kuota paket.", video: siteContent.videos.film },
-  { n: "04", title: "Deliver", desc: "File final + packing platform. Upsell member/kursus opsional.", video: siteContent.videos.campaign },
+  { n: "01", title: "Brief", desc: "Isi form / chat — tujuan, audience, referensi, deadline.", color: "from-amber-950/40 via-zinc-950 to-amber-900/10", bar: "bg-amber-500/30" },
+  { n: "02", title: "Produksi", desc: "Riset angle, script, edit AI-assisted, QC manusia.", color: "from-rose-950/40 via-zinc-950 to-rose-900/10", bar: "bg-rose-500/30" },
+  { n: "03", title: "Preview", desc: "Anda review. Revisi sesuai kuota paket.", color: "from-indigo-950/40 via-zinc-950 to-indigo-900/10", bar: "bg-indigo-500/30" },
+  { n: "04", title: "Deliver", desc: "File final + packing platform. Upsell member/kursus opsional.", color: "from-emerald-950/40 via-zinc-950 to-emerald-900/10", bar: "bg-emerald-500/30" },
 ]
 
 export function Process() {
@@ -33,11 +31,12 @@ export function Process() {
               transition={{ delay: idx * 0.06 }}
               className="relative rounded-2xl border border-white/12 overflow-hidden min-h-[280px] group"
             >
-              <VideoCard src={s.video} dim={30} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${s.color}`} />
+              <div className={`absolute bottom-0 left-0 right-0 h-1 ${s.bar}`} />
               <div className="relative z-10 p-5 min-h-[280px] flex flex-col justify-end">
-                <div className="text-amber-300 font-mono text-sm mb-2 drop-shadow">{s.n}</div>
-                <h3 className="font-semibold text-zinc-50 text-lg mb-1.5 drop-shadow">{s.title}</h3>
-                <p className="text-sm text-zinc-100/90 leading-relaxed drop-shadow">{s.desc}</p>
+                <div className="text-amber-300 font-mono text-sm mb-2">{s.n}</div>
+                <h3 className="font-semibold text-zinc-50 text-lg mb-1.5">{s.title}</h3>
+                <p className="text-sm text-zinc-300 leading-relaxed">{s.desc}</p>
               </div>
             </motion.div>
           ))}

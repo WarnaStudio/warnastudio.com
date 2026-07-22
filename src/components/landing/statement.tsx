@@ -3,8 +3,6 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { VideoCard } from "@/components/ui/video-card"
-import { siteContent } from "@/lib/content"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -47,8 +45,11 @@ export function Statement() {
 
   return (
     <section ref={ref} className="relative py-32 lg:py-44 overflow-hidden min-h-[70vh] flex items-center">
-      <VideoCard src={siteContent.videos.film} dim={40} className="!absolute !inset-0" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.12),transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1a0808] via-[#050507] to-[#0a0a05]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_50%,rgba(245,158,11,0.07),transparent_60%)]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-amber-500/5" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] rounded-full border border-amber-400/10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full bg-amber-500/10 blur-[120px]" />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="text-[11px] tracking-[0.3em] uppercase text-amber-300 mb-8">Manifesto</p>

@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion"
 import { Quote } from "lucide-react"
-import { VideoCard } from "@/components/ui/video-card"
-import { siteContent } from "@/lib/content"
 
 const items = [
   {
@@ -11,21 +9,24 @@ const items = [
       "Yang kami butuhkan bukan teori AI — tapi short iklan yang bisa langsung dipasang. Alurnya rapi dari brief sampai file.",
     name: "Klien brand",
     role: "Campaign digital",
-    video: siteContent.videos.ads,
+    bg: "from-amber-950/30 via-zinc-950 to-amber-900/10",
+    dot: "bg-amber-500/25",
   },
   {
     quote:
       "Membership + template bikin tim internal kami mulai produksi sendiri, tanpa harus full serah ke agency setiap minggu.",
     name: "Tim konten",
     role: "UMKM / creator",
-    video: siteContent.videos.course,
+    bg: "from-indigo-950/30 via-zinc-950 to-blue-900/10",
+    dot: "bg-indigo-500/25",
   },
   {
     quote:
       "Komunikasi jelas, paket tidak membingungkan, dan revisi terukur. Cocok untuk founder yang waktunya terbatas.",
     name: "Founder",
     role: "Jasa & produk digital",
-    video: siteContent.videos.ai,
+    bg: "from-rose-950/30 via-zinc-950 to-red-900/10",
+    dot: "bg-rose-500/25",
   },
 ]
 
@@ -55,12 +56,14 @@ export function Testimonials() {
               transition={{ delay: idx * 0.07 }}
               className="relative rounded-2xl border border-white/12 overflow-hidden min-h-[360px] flex flex-col"
             >
-              <VideoCard src={t.video} dim={34} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${t.bg}`} />
+              <div className={`absolute top-6 right-6 w-2 h-2 rounded-full ${t.dot}`} />
+              <div className={`absolute top-6 right-10 w-1 h-10 ${t.dot}`} />
               <div className="relative z-10 mt-auto p-6">
-                <Quote className="w-7 h-7 text-amber-300/80 mb-4 drop-shadow" />
-                <p className="text-sm text-zinc-50 leading-relaxed mb-6 drop-shadow-md">&ldquo;{t.quote}&rdquo;</p>
-                <p className="text-sm font-semibold text-white">{t.name}</p>
-                <p className="text-xs text-amber-200">{t.role}</p>
+                <Quote className="w-7 h-7 text-amber-300/80 mb-4" />
+                <p className="text-sm text-zinc-200 leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
+                <p className="text-sm font-semibold text-zinc-50">{t.name}</p>
+                <p className="text-xs text-amber-300/80">{t.role}</p>
               </div>
             </motion.div>
           ))}

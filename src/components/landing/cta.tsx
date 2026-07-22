@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
-import { VideoCard } from "@/components/ui/video-card"
 import { siteContent } from "@/lib/content"
 
 export function CTA() {
@@ -11,8 +10,10 @@ export function CTA() {
     <section className="py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden border border-amber-500/25 min-h-[420px] flex items-center justify-center text-center">
-          <VideoCard src={siteContent.videos.campaign} dim={45} priority />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.2),transparent_60%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-700/30 via-zinc-950 to-amber-900/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(245,158,11,0.15),transparent_60%)]" />
+          <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-amber-500/5 blur-[100px]" />
+          <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-amber-500/5 blur-[100px]" />
 
           <div className="relative max-w-2xl mx-auto px-6 py-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-50 mb-4 tracking-tight drop-shadow-lg">

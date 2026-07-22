@@ -1,7 +1,5 @@
 "use client"
 
-import { siteContent } from "@/lib/content"
-
 const items = [
   "AI Short Ads",
   "Cinematic Cut",
@@ -17,16 +15,8 @@ export function Marquee() {
   const row = [...items, ...items]
   return (
     <section className="relative border-y border-white/10 overflow-hidden py-5">
-      <video
-        src={siteContent.videos.ai}
-        poster="/videos/ai.jpg"
-        className="absolute inset-0 w-full h-full object-cover"
-        muted
-        loop
-        playsInline
-        autoPlay
-      />
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-amber-950/70 via-zinc-950 to-rose-950/60" />
+      <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent,transparent_60px,rgba(245,158,11,0.015)_60px,rgba(245,158,11,0.015)_61px)]" />
       <div className="ws-marquee relative flex whitespace-nowrap">
         {row.map((t, i) => (
           <span

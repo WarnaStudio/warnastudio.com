@@ -4,14 +4,14 @@ import Link from "next/link"
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { siteContent } from "@/lib/content"
-import { VideoCard } from "@/components/ui/video-card"
+
 
 export function Packages() {
   return (
     <section id="packages" className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0">
-        <VideoCard src={siteContent.videos.campaign} dim={48} />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#050507] via-[#0a0a10] to-[#0d0808]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(245,158,11,0.05),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(120,40,40,0.05),transparent_50%)]" />
 
       <div className="relative max-w-[1400px] mx-auto px-5 sm:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
