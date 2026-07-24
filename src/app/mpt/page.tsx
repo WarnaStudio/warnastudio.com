@@ -1,71 +1,216 @@
-import type { Metadata } from "next";
-import Script from "next/script";
-import Image from "next/image";
-import Link from "next/link";
+"use client"
 
-export const metadata: Metadata = {
-  title: "ViralClip AI by WarnaStudio - AI Short Video Generator",
-  description: "Generate viral short videos in minutes with AI. Local TikTok/YouTube Shorts/Reels generator with no watermark.",
-  openGraph: {
-    title: "ViralClip AI - AI Short Video Generator",
-    description: "Generate viral short videos with AI. Fast, free, no watermark.",
-    images: ["/images/mpt-og.jpg"],
-    type: "website",
-    url: "https://viralclip.warnastudio.com",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "ViralClip AI - AI Short Video Generator",
-    description: "Generate viral short videos with AI. Fast, free, no watermark.",
-    images: ["/images/mpt-twitter.jpg"],
-  },
-  icons: {
-    icon: ["/favicon.ico"],
-    shortcut: ["/favicon-16x16.png"],
-    apple: ["/apple-touch-icon.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
+import { useState, useEffect } from "react"
+import Link from "next/link"
 
 export default function MPTLandingPage() {
+  const [lang, setLang] = useState<"id" | "en">("id")
+
+  const content = {
+    id: {
+      meta: {
+        title: "ViralClip AI - Generator Video Pendek Viral",
+        description: "Buat video pendek viral dalam hitungan menit dengan AI. TikTok, YouTube Shorts, Reels dengan watermark gratis.",
+      },
+      hero: {
+        badge: "Versi 2.0 Baru",
+        title: "Generator Video Viral",
+        subtitle: "Dari ide ke video pendek viral dalam hitungan menit — semua otomatis.",
+        cta: "Mulai Gratis",
+        github: "Lihat di GitHub",
+        features: ["Tanpa Watermark", "100% Gratis", "Proses Lokal"],
+      },
+      features: [
+        {
+          icon: "smart_toy",
+          title: "Dibuat dengan AI",
+          desc: "Generate script, keywords, dan thumbnail otomatis dengan AI canggih.",
+        },
+        {
+          icon: "subtitles",
+          title: "Subtitle Karaoke",
+          desc: "Subtitle tersinkron dengan voice over dengan efek highlight.",
+        },
+        {
+          icon: "water_drop",
+          title: "Tanpa Watermark",
+          desc: "Tidak ada watermark. Konten Anda, brand Anda.",
+        },
+        {
+          icon: "auto_awesome",
+          title: "50+ Bahasa",
+          desc: "Support 50+ bahasa termasuk Indonesia.",
+        },
+        {
+          icon: "edit",
+          title: "Branding Kustom",
+          desc: "Tambahkan watermark, logo, dan elemen branding sendiri.",
+        },
+        {
+          icon: "devices",
+          title: "Multi-Platform",
+          desc: "Optimized untuk TikTok, YouTube Shorts, dan Instagram Reels.",
+        },
+      ],
+      steps: [
+        { step: 1, title: "Input Ide", desc: "Ketik topik atau keyword video yang ingin dibuat." },
+        { step: 2, title: "AI Generate", desc: "AI buat script, cari material, generate voice over, subtitle, dan BGM." },
+        { step: 3, title: "Generate & Download", desc: "One-click generate video dengan subtitle dan watermark gratis." },
+      ],
+      stats: [
+        { stat: "50+", label: "Bahasa" },
+        { stat: "1000+", label: "Pengguna" },
+        { stat: "60s", label: "Rata-rata Generate" },
+        { stat: "Gratis", label: "Selamanya" },
+      ],
+      cta: {
+        title: "Siap Membuat Video Viral?",
+        subtitle: "Gabung ribuan konten kreator yang menggunakan AI untuk generate video pendek dalam menit.",
+        button1: "Mulai Gratis",
+        button2: "Lihat Dokumentasi",
+      },
+      footer: {
+        product: "ViralClip AI",
+        description: "Generator video pendek berbasis AI untuk konten kreator.",
+        productLinks: ["Fitur", "Dokumentasi", "GitHub"],
+        companyLinks: ["WarnaStudio", "FAQ"],
+        connect: "Terhubung",
+        githubIcon: "github",
+      },
+    },
+    en: {
+      meta: {
+        title: "ViralClip AI - Viral Short Video Generator",
+        description: "Generate viral short videos in minutes with AI. TikTok, YouTube Shorts, Reels with watermark free.",
+      },
+      hero: {
+        badge: "New Version 2.0",
+        title: "Viral Short Video",
+        subtitle: "From idea to viral short video in minutes — all automated.",
+        cta: "Get Started Free",
+        github: "View on GitHub",
+        features: ["No Watermark", "100% Free", "Local Processing"],
+      },
+      features: [
+        {
+          icon: "smart_toy",
+          title: "AI-Powered Generation",
+          desc: "Generate scripts, keywords, and thumbnails automatically with advanced AI.",
+        },
+        {
+          icon: "subtitles",
+          title: "Karaoke Subtitles",
+          desc: "Synchronized subtitles with highlight effects and voice over.",
+        },
+        {
+          icon: "water_drop",
+          title: "Watermark-Free",
+          desc: "Completely free of watermarks. Your content, your brand.",
+        },
+        {
+          icon: "auto_awesome",
+          title: "50+ Languages",
+          desc: "Support for 50+ languages including Indonesian.",
+        },
+        {
+          icon: "edit",
+          title: "Custom Branding",
+          desc: "Add custom watermarks, logos, and branding elements.",
+        },
+        {
+          icon: "devices",
+          title: "Multi-Platform",
+          desc: "Optimized for TikTok, YouTube Shorts, and Instagram Reels.",
+        },
+      ],
+      steps: [
+        { step: 1, title: "Input Idea", desc: "Type a video topic or keyword you want to create content about." },
+        { step: 2, title: "AI Generate", desc: "AI creates script, finds materials, generates voice over, subtitles, and BGM." },
+        { step: 3, title: "Generate & Download", desc: "One-click generate video with subtitles and watermark-free output." },
+      ],
+      stats: [
+        { stat: "50+", label: "Languages" },
+        { stat: "1000+", label: "Users" },
+        { stat: "60s", label: "Avg. Generation" },
+        { stat: "Free", label: "Forever" },
+      ],
+      cta: {
+        title: "Ready to Create Viral Videos?",
+        subtitle: "Join thousands of content creators using AI to generate short videos in minutes.",
+        button1: "Start Creating Free",
+        button2: "View Documentation",
+      },
+      footer: {
+        product: "ViralClip AI",
+        description: "AI-powered short video generator for content creators.",
+        productLinks: ["Features", "Documentation", "GitHub"],
+        companyLinks: ["WarnaStudio", "FAQ"],
+        connect: "Connect",
+        githubIcon: "github",
+      },
+    },
+  }
+
+  useEffect(() => {
+    document.title = lang === "id" ? content.id.meta.title : content.en.meta.title
+  }, [lang])
+
+  const t = content[lang]
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Language Switcher */}
+      <div className="fixed top-4 right-4 z-50">
+        <div className="bg-slate-800/80 backdrop-blur-md border border-slate-600 rounded-xl p-1 flex gap-1">
+          <button
+            onClick={() => setLang("id")}
+            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+              lang === "id"
+                ? "bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            ID
+          </button>
+          <button
+            onClick={() => setLang("en")}
+            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+              lang === "en"
+                ? "bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg"
+                : "text-slate-400 hover:text-white"
+            }`}
+          >
+            EN
+          </button>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent" />
         <div className="container mx-auto px-6 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20">
-                <span className="text-amber-400 font-medium">New Version 2.0</span>
+                <span className="text-amber-400 font-medium">{t.hero.badge}</span>
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
               </div>
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
-                AI Short Video
+                {t.hero.title}
                 <br />
                 <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
-                  Generator
+                  {t.hero.title}
                 </span>
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
-                Generate viral short videos in minutes with AI. Fast, local, and completely free of watermarks.
+                {t.hero.subtitle}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/mpt/docs"
                   className="px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold rounded-xl hover:from-amber-400 hover:to-amber-500 transition-all shadow-lg shadow-amber-500/25"
                 >
-                  Get Started Free
+                  {t.hero.cta}
                 </Link>
                 <Link
                   href="https://github.com/WarnaStudio/warnastudio.com"
@@ -73,28 +218,18 @@ export default function MPTLandingPage() {
                   rel="noopener noreferrer"
                   className="px-8 py-4 bg-white/5 border border-white/10 text-white font-semibold rounded-xl hover:bg-white/10 transition-all"
                 >
-                  View on GitHub
+                  {t.hero.github}
                 </Link>
               </div>
               <div className="flex items-center gap-6 text-sm text-slate-400">
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>No Watermark</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>100% Free</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Local Processing</span>
-                </div>
+                {t.hero.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="relative">
@@ -110,18 +245,14 @@ export default function MPTLandingPage() {
                     <div className="text-slate-300">From script to viral video</div>
                   </div>
                   <div className="space-y-3 w-full">
-                    <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                      <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center text-white font-bold text-sm">1</div>
-                      <span className="text-slate-200">Enter video subject</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                      <div className="w-8 h-8 rounded-lg bg-purple-500 flex items-center justify-center text-white font-bold text-sm">2</div>
-                      <span className="text-slate-200">AI generates script & keywords</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                      <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-white font-bold text-sm">3</div>
-                      <span className="text-slate-200">Generate and download video</span>
-                    </div>
+                    {t.steps.map((step, idx) => (
+                      <div key={idx} className="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                        <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-white font-bold text-sm">
+                          {step.step}
+                        </div>
+                        <span className="text-slate-200">{step.title}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -134,44 +265,13 @@ export default function MPTLandingPage() {
       <section className="py-20 bg-slate-800/50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Everything You Need</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">{t.features[0].title}</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Powerful AI-driven features to create professional short videos effortlessly.
+              Fitur lengkap untuk memproduksi video pendek profesional secara otomatis.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "smart_toy",
-                title: "AI-Powered Generation",
-                description: "Generate scripts, keywords, and thumbnails automatically with AI.",
-              },
-              {
-                icon: "subtitles",
-                title: "Auto Subtitles",
-                description: "Generate karaoke-style subtitles with highlight effects.",
-              },
-              {
-                icon: "water_drop",
-                title: "Watermark-Free",
-                description: "Completely free of watermarks. Your content, your brand.",
-              },
-              {
-                icon: "auto_awesome",
-                title: "Multiple Languages",
-                description: "Support for 50+ languages including Indonesian.",
-              },
-              {
-                icon: "edit",
-                title: "Custom Branding",
-                description: "Add custom watermarks, logos, and branding elements.",
-              },
-              {
-                icon: "devices",
-                title: "Multi-Platform",
-                description: "Optimized for TikTok, YouTube Shorts, and Instagram Reels.",
-              },
-            ].map((feature, idx) => (
+            {t.features.map((feature, idx) => (
               <div
                 key={idx}
                 className="p-8 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 border border-slate-600 hover:border-amber-500/50 transition-all group"
@@ -182,7 +282,7 @@ export default function MPTLandingPage() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-                <p className="text-slate-300 leading-relaxed">{feature.description}</p>
+                <p className="text-slate-300 leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -193,35 +293,21 @@ export default function MPTLandingPage() {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">How It Works</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">{lang === "id" ? "Cara Kerja" : "How It Works"}</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Create your first video in just 3 simple steps.
+              {lang === "id"
+                ? "Buat video pertama Anda hanya dalam 3 langkah mudah"
+                : "Create your first video in just 3 simple steps"}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                step: 1,
-                title: "Enter Your Topic",
-                description: "Simply type in a video topic or subject you want to create content about.",
-              },
-              {
-                step: 2,
-                title: "AI Does The Rest",
-                description: "Our AI generates a compelling script, finds relevant videos, and creates a professional thumbnail.",
-              },
-              {
-                step: 3,
-                title: "Generate & Download",
-                description: "One-click generation of your video with karaoke subtitles and watermark-free output.",
-              },
-            ].map((item, idx) => (
+            {t.steps.map((item, idx) => (
               <div key={idx} className="text-center">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/25">
                   <span className="text-3xl font-bold text-white">{item.step}</span>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-slate-300 leading-relaxed max-w-sm mx-auto">{item.description}</p>
+                <p className="text-slate-300 leading-relaxed max-w-sm mx-auto">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -232,12 +318,7 @@ export default function MPTLandingPage() {
       <section className="py-20 bg-slate-800/50">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { stat: "50+", label: "Languages Supported" },
-              { stat: "1000+", label: "Users Worldwide" },
-              { stat: "60s", label: "Avg. Generation Time" },
-              { stat: "Free", label: "Forever Free" },
-            ].map((item, idx) => (
+            {t.stats.map((item, idx) => (
               <div key={idx} className="text-center">
                 <div className="text-5xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-2">
                   {item.stat}
@@ -255,17 +336,17 @@ export default function MPTLandingPage() {
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500 to-amber-600 p-12 md:p-16">
             <div className="relative z-10 text-center space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-white">
-                Ready to Create Viral Videos?
+                {t.cta.title}
               </h2>
               <p className="text-xl text-white/90 max-w-2xl mx-auto">
-                Join thousands of content creators using AI to generate short videos in minutes.
+                {t.cta.subtitle}
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link
                   href="/mpt/docs"
                   className="px-8 py-4 bg-white text-amber-600 font-semibold rounded-xl hover:bg-slate-100 transition-all shadow-lg"
                 >
-                  Start Creating Free
+                  {t.cta.button1}
                 </Link>
                 <Link
                   href="https://github.com/WarnaStudio/warnastudio.com"
@@ -273,7 +354,7 @@ export default function MPTLandingPage() {
                   rel="noopener noreferrer"
                   className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl hover:bg-white/20 transition-all"
                 >
-                  View Documentation
+                  {t.cta.button2}
                 </Link>
               </div>
             </div>
@@ -286,26 +367,26 @@ export default function MPTLandingPage() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-white">MoneyPrinterTurbo</h3>
-              <p className="text-slate-400">AI-powered short video generator for content creators.</p>
+              <h3 className="text-xl font-bold text-white">{t.footer.product}</h3>
+              <p className="text-slate-400">{t.footer.description}</p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Product</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">{t.footer.productLinks[0]}</h4>
               <ul className="space-y-2">
-                <li><Link href="/mpt" className="text-slate-400 hover:text-amber-400 transition-colors">Features</Link></li>
-                <li><Link href="/mpt/docs" className="text-slate-400 hover:text-amber-400 transition-colors">Documentation</Link></li>
-                <li><Link href="https://github.com/WarnaStudio/warnastudio.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-amber-400 transition-colors">GitHub</Link></li>
+                <li><Link href="/viralclip" className="text-slate-400 hover:text-amber-400 transition-colors">{t.footer.productLinks[0]}</Link></li>
+                <li><Link href="/viralclip/docs" className="text-slate-400 hover:text-amber-400 transition-colors">{t.footer.productLinks[1]}</Link></li>
+                <li><Link href="https://github.com/WarnaStudio/warnastudio.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-amber-400 transition-colors">{t.footer.productLinks[2]}</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Company</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">{t.footer.companyLinks[0]}</h4>
               <ul className="space-y-2">
-                <li><Link href="/" className="text-slate-400 hover:text-amber-400 transition-colors">WarnaStudio</Link></li>
-                <li><Link href="/mpt/faq" className="text-slate-400 hover:text-amber-400 transition-colors">FAQ</Link></li>
+                <li><Link href="/" className="text-slate-400 hover:text-amber-400 transition-colors">{t.footer.companyLinks[0]}</Link></li>
+                <li><Link href="/viralclip/faq" className="text-slate-400 hover:text-amber-400 transition-colors">{t.footer.companyLinks[1]}</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Connect</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">{t.footer.connect}</h4>
               <div className="flex gap-4">
                 <a
                   href="https://github.com/WarnaStudio/warnastudio.com"
@@ -321,10 +402,10 @@ export default function MPTLandingPage() {
             </div>
           </div>
           <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
-            <p>© 2024 WarnaStudio. MoneyPrinterTurbo is open source.</p>
+            <p>© 2024 WarnaStudio. {t.footer.product} is open source.</p>
           </div>
         </div>
       </footer>
     </div>
-  );
+  )
 }
