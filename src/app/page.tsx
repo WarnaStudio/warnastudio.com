@@ -6,6 +6,7 @@ import { Services } from "@/components/landing/services"
 import { Packages } from "@/components/landing/packages"
 import { Process } from "@/components/landing/process"
 import { Portfolio } from "@/components/landing/portfolio"
+import { Products } from "@/components/landing/products"
 import { Testimonials } from "@/components/landing/testimonials"
 import { CTA } from "@/components/landing/cta"
 import { Reveal } from "@/components/experience/reveal"
@@ -25,6 +26,9 @@ export default function HomePage() {
         <Process />
       </Reveal>
       <Portfolio />
+      <Reveal>
+        <Products />
+      </Reveal>
       <Reveal>
         <Testimonials />
       </Reveal>

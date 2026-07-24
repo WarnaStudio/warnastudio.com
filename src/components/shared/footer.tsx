@@ -15,6 +15,7 @@ const footerLinks: Record<string, FooterLink[]> = {
   ],
   Produk: [
     { title: "XAUUSD Journal", href: "https://jurnaltradingkumplit-yfte.vercel.app", target: "_blank" },
+    { title: "MoneyPrinterTurbo", href: "/mpt" },
     { title: "Member area", href: "/register" },
     { title: "Masuk", href: "/login" },
   ],

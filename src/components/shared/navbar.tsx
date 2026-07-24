@@ -10,6 +10,7 @@ const navLinks = [
   { title: "Layanan", href: "/#services" },
   { title: "Paket", href: "/#packages" },
   { title: "Karya", href: "/#works" },
+  { title: "Produk", href: "/#products" },
   { title: "Kursus", href: "/courses" },
   { title: "Kontak", href: "/contact" },
 ]
