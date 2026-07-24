@@ -1,11 +1,12 @@
 import Link from "next/link"
-import { LayoutDashboard, Users, Briefcase, Wallet, BookOpen, Newspaper, Ticket, Settings } from "lucide-react"
+import { LayoutDashboard, Users, Briefcase, Wallet, BookOpen, Newspaper, Ticket, Settings, Video } from "lucide-react"
 
 const adminNav = [
   { title: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { title: "CRM", href: "/admin/crm", icon: Users },
   { title: "Projects", href: "/admin/projects", icon: Briefcase },
   { title: "Finance", href: "/admin/finance", icon: Wallet },
+  { title: "Video Studio", href: "/admin/mpt", icon: Video },
   { title: "Courses", href: "/admin/courses", icon: BookOpen },
   { title: "Blog", href: "/admin/blog", icon: Newspaper },
   { title: "Tickets", href: "/admin/tickets", icon: Ticket },
