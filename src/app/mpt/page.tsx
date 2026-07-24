@@ -4,18 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "MoneyPrinterTurbo by WarnaStudio - AI Short Video Generator",
+  title: "ViralClip AI by WarnaStudio - AI Short Video Generator",
   description: "Generate viral short videos in minutes with AI. Local TikTok/YouTube Shorts/Reels generator with no watermark.",
   openGraph: {
-    title: "MoneyPrinterTurbo - AI Short Video Generator",
+    title: "ViralClip AI - AI Short Video Generator",
     description: "Generate viral short videos with AI. Fast, free, no watermark.",
     images: ["/images/mpt-og.jpg"],
     type: "website",
-    url: "https://warnastudiocom.vercel.app/mpt",
+    url: "https://viralclip.warnastudio.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MoneyPrinterTurbo - AI Short Video Generator",
+    title: "ViralClip AI - AI Short Video Generator",
     description: "Generate viral short videos with AI. Fast, free, no watermark.",
     images: ["/images/mpt-twitter.jpg"],
   },

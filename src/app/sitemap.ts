@@ -11,9 +11,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/courses`, changeFrequency: "weekly" as const, priority: 0.8 },
     { url: `${baseUrl}/blog`, changeFrequency: "daily" as const, priority: 0.9 },
     { url: `${baseUrl}/contact`, changeFrequency: "monthly" as const, priority: 0.6 },
-    { url: `${baseUrl}/mpt`, changeFrequency: "weekly" as const, priority: 0.8 },
-    { url: `${baseUrl}/mpt/docs`, changeFrequency: "weekly" as const, priority: 0.7 },
-    { url: `${baseUrl}/mpt/faq`, changeFrequency: "monthly" as const, priority: 0.5 },
+    { url: `${baseUrl}/viralclip`, changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${baseUrl}/viralclip/docs`, changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${baseUrl}/viralclip/faq`, changeFrequency: "monthly" as const, priority: 0.5 },
     { url: `${baseUrl}/about`, changeFrequency: "monthly" as const, priority: 0.6 },
     { url: `${baseUrl}/login`, changeFrequency: "monthly" as const, priority: 0.5 },
   ]
