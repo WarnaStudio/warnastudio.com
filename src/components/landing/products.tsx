@@ -7,7 +7,7 @@ const products = [
     icon: TrendingUp,
     title: "XAUUSD Journal",
     desc: "Trading journal AI untuk XAUUSD. Analisis, prediksi, dan tracking trading gold dengan bantuan AI.",
-    href: "https://jurnaltradingkumplit-yfte.vercel.app",
+    href: "https://jurnal.warnastudio.com",
     target: "_blank",
     badge: "Live",
     accent: "from-amber-500/20 to-orange-500/20",
