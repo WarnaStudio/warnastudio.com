@@ -11,6 +11,7 @@ type Props = {
   priority?: boolean
   poster?: string
   active?: boolean
+  fallback?: string
 }
 
 function posterFromSrc(src: string) {
