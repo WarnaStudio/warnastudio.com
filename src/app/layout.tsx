@@ -16,7 +16,10 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "WarnaStudio | Iklan & Video AI Siap Tayang",
+  title: {
+    default: "WarnaStudio | Iklan & Video AI Siap Tayang",
+    template: "%s | WarnaStudio",
+  },
   description:
     "Studio produksi iklan dan video berbasis AI — plus membership, kursus, dan produk digital untuk bisnis yang ingin scale konten.",
   keywords: [
@@ -27,6 +30,41 @@ export const metadata: Metadata = {
     "kursus AI",
     "membership digital",
   ],
+  authors: [{ name: "WarnaStudio" }],
+  creator: "WarnaStudio",
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://warnastudio.com",
+    siteName: "WarnaStudio",
+    title: "WarnaStudio | Iklan & Video AI Siap Tayang",
+    description:
+      "Studio produksi iklan dan video berbasis AI — plus membership, kursus, dan produk digital untuk bisnis yang ingin scale konten.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WarnaStudio | Iklan & Video AI Siap Tayang",
+    description:
+      "Studio produksi iklan dan video berbasis AI — plus membership, kursus, dan produk digital untuk bisnis yang ingin scale konten.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 }
 
 export default function RootLayout({

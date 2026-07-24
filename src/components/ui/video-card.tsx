@@ -10,10 +10,10 @@ type Props = {
   overlay?: boolean
   priority?: boolean
   poster?: string
+  active?: boolean
 }
 
 function posterFromSrc(src: string) {
-  // /videos/showreel.mp4 -> /videos/showreel.jpg
   return src.replace(/\.mp4$/i, ".jpg")
 }
 
@@ -25,6 +25,7 @@ export function VideoCard({
   overlay = true,
   priority = false,
   poster,
+  active = true,
 }: Props) {
   const ref = useRef<HTMLVideoElement>(null)
   const [failed, setFailed] = useState(false)
@@ -34,7 +35,6 @@ export function VideoCard({
     const v = ref.current
     if (!v) return
 
-    // Critical for autoplay policies
     v.muted = true
     v.defaultMuted = true
     v.playsInline = true
@@ -42,6 +42,10 @@ export function VideoCard({
     v.setAttribute("playsinline", "")
 
     const tryPlay = () => {
+      if (!active) {
+        v.pause()
+        return
+      }
       const p = v.play()
       if (p) p.catch(() => {})
     }
@@ -51,7 +55,7 @@ export function VideoCard({
 
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) tryPlay()
+        if (entry.isIntersecting && active) tryPlay()
         else v.pause()
       },
       { threshold: 0.05, rootMargin: "80px" }
@@ -63,11 +67,10 @@ export function VideoCard({
       v.removeEventListener("canplay", onCanPlay)
       io.disconnect()
     }
-  }, [src])
+  }, [src, active])
 
   return (
     <div className={`absolute inset-0 overflow-hidden bg-zinc-900 ${className}`}>
-      {/* Poster always visible underneath */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={posterSrc}
@@ -85,8 +88,8 @@ export function VideoCard({
           muted
           loop
           playsInline
-          autoPlay
-          preload="auto"
+          autoPlay={active}
+          preload={priority ? "auto" : "metadata"}
           onError={() => setFailed(true)}
         />
       )}

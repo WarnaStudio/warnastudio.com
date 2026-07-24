@@ -16,35 +16,41 @@ export function Services() {
         </h2>
       </div>
 
-      <div className="flex flex-col">
-        {siteContent.services.map((s, i) => (
-          <Link
-            key={s.id}
-            href="/contact"
-            data-cursor="hover"
-            className="group relative min-h-[70vh] sm:min-h-[80vh] border-t border-white/10 overflow-hidden"
-          >
-            <VideoCard src={s.video} dim={28} className="!absolute !inset-0" />
-            <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 h-full min-h-[70vh] sm:min-h-[80vh] flex flex-col justify-end pb-12 sm:pb-16">
-              <div className="flex items-end justify-between gap-6">
-                <div className="max-w-2xl">
-                  <div className="text-amber-300/80 font-mono text-sm mb-3">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4 group-hover:translate-x-2 transition-transform duration-500">
-                    {s.title}
-                  </h3>
-                  <p className="text-base sm:text-lg text-zinc-300 max-w-xl leading-relaxed">
-                    {s.desc}
-                  </p>
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {siteContent.services.map((s, i) => (
+            <Link
+              key={s.id}
+              href="/contact"
+              data-cursor="hover"
+              className="group relative overflow-hidden bg-black/40 border border-white/10 transition-all duration-500 hover:border-amber-400/40 hover:-translate-y-1"
+            >
+              <div className="relative aspect-[16/9]">
+                <VideoCard src={s.video} dim={35} active priority={i < 2} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+              </div>
+              <div className="p-6 sm:p-8">
+                <div className="text-amber-300/80 font-mono text-sm mb-3">
+                  {String(i + 1).padStart(2, "0")}
                 </div>
-                <div className="hidden sm:flex w-14 h-14 rounded-full border border-white/30 items-center justify-center text-white group-hover:bg-amber-400 group-hover:text-black group-hover:border-amber-400 transition-all">
-                  <ArrowUpRight className="w-6 h-6" />
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-white mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                  {s.title}
+                </h3>
+                <p className="text-sm sm:text-base text-zinc-300 leading-relaxed mb-6">
+                  {s.desc}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-amber-400/80">
+                    Lihat detail
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-amber-400 group-hover:text-black group-hover:border-amber-400 transition-all">
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   )

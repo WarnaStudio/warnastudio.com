@@ -36,7 +36,6 @@ export function Hero() {
 
   return (
     <section ref={root} className="relative min-h-[100svh] overflow-hidden bg-[#050507]">
-      {/* Video base — always visible */}
       <div className="absolute inset-0">
         <video
           ref={videoRef}
@@ -50,7 +49,6 @@ export function Hero() {
           preload="auto"
         />
       </div>
-      {/* WebGL accent layer */}
       <div className="absolute inset-0 opacity-55 mix-blend-lighten">
         <HeroScene />
       </div>

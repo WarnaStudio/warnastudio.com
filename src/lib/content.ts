@@ -2,7 +2,7 @@
 export const siteContent = {
   brand: "WarnaStudio",
   tagline: "Creative technology for ads that convert",
-  whatsapp: "", // isi nomor WA nanti, contoh: https://wa.me/62...
+  whatsapp: "",
   videos: {
     showreel: "/videos/showreel.mp4",
     ads: "/videos/ads.mp4",
@@ -39,6 +39,7 @@ export const siteContent = {
   ],
   works: [
     {
+      slug: "showreel-studio",
       title: "Showreel Studio",
       category: "Showreel",
       blurb: "Cuplikan arah visual & pacing produksi WarnaStudio.",
@@ -46,6 +47,7 @@ export const siteContent = {
       href: "/contact",
     },
     {
+      slug: "short-ads-system",
       title: "Short Ads System",
       category: "Iklan",
       blurb: "Format iklan pendek multi-hook untuk campaign harian.",
@@ -53,6 +55,7 @@ export const siteContent = {
       href: "/#packages",
     },
     {
+      slug: "cinematic-cut",
       title: "Cinematic Cut",
       category: "Film",
       blurb: "Potongan film/profile untuk presentasi dan website.",
@@ -60,6 +63,7 @@ export const siteContent = {
       href: "/contact",
     },
     {
+      slug: "ai-pipeline",
       title: "AI Pipeline Demo",
       category: "AI",
       blurb: "Alur potong & packing konten berbasis AI.",
@@ -67,6 +71,7 @@ export const siteContent = {
       href: "/services",
     },
     {
+      slug: "learning-vault",
       title: "Learning Vault",
       category: "Kursus",
       blurb: "Preview gaya materi kursus produksi AI.",
@@ -74,6 +79,7 @@ export const siteContent = {
       href: "/courses",
     },
     {
+      slug: "campaign-pack",
       title: "Campaign Pack",
       category: "Retainer",
       blurb: "Output konsisten untuk brand yang butuh ritme konten.",

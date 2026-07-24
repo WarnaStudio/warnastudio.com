@@ -63,12 +63,12 @@ export function Portfolio() {
         <div ref={track} className="flex gap-5 px-5 sm:px-8 w-max will-change-transform">
           {siteContent.works.map((w, i) => (
             <Link
-              key={w.title}
-              href={w.href}
+              key={w.slug || w.title}
+              href={w.slug ? `/work/${w.slug}` : "/contact"}
               data-cursor="hover"
               className="relative w-[85vw] sm:w-[440px] lg:w-[520px] h-[62vw] sm:h-[560px] rounded-[28px] overflow-hidden border border-white/10 group block"
             >
-              <VideoCard src={w.video} dim={30} priority={i < 2} />
+              <VideoCard src={w.video} dim={30} priority={i < 2} active />
               <div className="absolute top-5 left-5 right-5 flex justify-between text-[10px] uppercase tracking-[0.2em] text-white/80">
                 <span>{w.category}</span>
                 <span>0{i + 1}</span>

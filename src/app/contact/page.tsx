@@ -1,18 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Phone, MapPin, Clock } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card } from "@/components/ui/card"
-
-const contactInfo = [
-  { icon: Mail, label: "Email", value: "hello@warnastudio.com" },
-  { icon: Phone, label: "Telepon", value: "+62 812-3456-7890" },
-  { icon: MapPin, label: "Lokasi", value: "Jakarta, Indonesia" },
-  { icon: Clock, label: "Jam Kerja", value: "Sen - Jum, 09:00 - 18:00" },
-]
+import Link from "next/link"
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false)
@@ -22,84 +11,100 @@ export default function ContactPage() {
     e.preventDefault()
     setLoading(true)
     const form = new FormData(e.currentTarget)
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: form.get("name"),
-        email: form.get("email"),
-        phone: form.get("phone"),
-        subject: form.get("subject"),
-        message: form.get("message"),
-      }),
-    })
-    if (res.ok) setSuccess(true)
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.get("name"),
+          email: form.get("email"),
+          phone: form.get("phone"),
+          subject: form.get("subject"),
+          message: form.get("message"),
+        }),
+      })
+      if (res.ok) setSuccess(true)
+    } catch {
+      /* ignore */
+    }
     setLoading(false)
   }
 
   return (
-    <div className="pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-muted-foreground mb-4">
-            Kontak
-          </div>
-          <h1 className="text-4xl font-bold mb-4">
-            Hubungi <span className="gradient-text">Kami</span>
-          </h1>
-          <p className="text-muted-foreground">
-            Punya project atau pertanyaan? Kami siap membantu mewujudkan ide Anda.
-          </p>
+    <section className="relative min-h-[100svh] max-w-[1400px] mx-auto px-5 sm:px-8 pt-28 pb-24">
+      <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6">
+        <span className="text-[#C64DFF]">Contact</span> · Start a project
+      </p>
+      <h1 className="text-5xl sm:text-7xl font-medium tracking-tight mb-4">LET&apos;S BUILD</h1>
+      <p className="text-white/45 font-light max-w-md mb-14">
+        Brief iklan, film, retainer, atau membership — kirim detailnya.
+      </p>
+
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+        <div className="space-y-6">
+          {[
+            ["Email", "hello@warnastudio.com"],
+            ["Base", "Indonesia"],
+            ["Hours", "Sen — Jum, 09:00–18:00"],
+          ].map(([l, v]) => (
+            <div key={l} className="border-b border-white/10 pb-4">
+              <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/35 mb-1">{l}</div>
+              <div className="text-lg font-light">{v}</div>
+            </div>
+          ))}
+          <Link
+            href="/work"
+            data-cursor="hover"
+            className="inline-flex font-mono text-[11px] tracking-[0.18em] uppercase text-white/50 hover:text-white pt-4"
+          >
+            ← Back to work
+          </Link>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
-          <div className="lg:col-span-2 space-y-4">
-            {contactInfo.map((info) => {
-              const Icon = info.icon
-              return (
-                <Card key={info.label} className="p-4 flex items-center gap-4 glass">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-violet-400" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">{info.label}</p>
-                    <p className="text-sm font-medium">{info.value}</p>
-                  </div>
-                </Card>
-              )
-            })}
+        {success ? (
+          <div className="border border-white/10 bg-black/40 backdrop-blur-md p-10 flex flex-col justify-center min-h-[360px]">
+            <div className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#C64DFF] mb-4">Sent</div>
+            <p className="text-2xl font-medium mb-2">Message received.</p>
+            <p className="text-white/45 font-light">Kami akan balas secepatnya.</p>
           </div>
-
-          <div className="lg:col-span-3">
-            {success ? (
-              <Card className="p-8 glass text-center">
-                <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-2">Pesan Terkirim!</h3>
-                <p className="text-sm text-muted-foreground">Tim kami akan menghubungi Anda dalam 1x24 jam.</p>
-              </Card>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <Input label="Nama" id="name" name="name" placeholder="Nama lengkap" required />
-                  <Input label="Email" id="email" name="email" type="email" placeholder="email@example.com" required />
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <Input label="Telepon" id="phone" name="phone" placeholder="+62 812-xxxx" />
-                  <Input label="Subjek" id="subject" name="subject" placeholder="Project / Konsultasi" />
-                </div>
-                <Textarea label="Pesan" id="message" name="message" placeholder="Deskripsikan project atau pertanyaan Anda..." required />
-                <Button type="submit" variant="primary" size="lg" className="w-full" loading={loading}>
-                  Kirim Pesan
-                </Button>
-              </form>
-            )}
-          </div>
-        </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="border border-white/10 bg-black/40 backdrop-blur-md p-6 sm:p-8 space-y-5">
+            {[
+              ["name", "Name", "text"],
+              ["email", "Email", "email"],
+              ["phone", "Phone", "tel"],
+              ["subject", "Subject", "text"],
+            ].map(([name, label, type]) => (
+              <label key={name} className="block">
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/35 mb-2 block">{label}</span>
+                <input
+                  name={name}
+                  type={type}
+                  required={name === "name" || name === "email" || name === "message"}
+                  className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm outline-none focus:border-[#C64DFF]/50"
+                />
+              </label>
+            ))}
+            <label className="block">
+              <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/35 mb-2 block">Message</span>
+              <textarea
+                name="message"
+                required
+                rows={4}
+                className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm outline-none focus:border-[#C64DFF]/50 resize-y"
+              />
+            </label>
+            <button
+              type="submit"
+              disabled={loading}
+              data-cursor="hover"
+              className="w-full h-12 bg-white text-black font-mono text-[11px] tracking-[0.2em] uppercase hover:bg-[#C64DFF] hover:text-white transition-colors disabled:opacity-50"
+            >
+              {loading ? "Sending…" : "Send message"}
+            </button>
+          </form>
+        )}
       </div>
-    </div>
+    </section>
   )
 }
