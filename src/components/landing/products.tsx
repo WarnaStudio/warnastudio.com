@@ -15,8 +15,8 @@ const products = [
   },
   {
     icon: Video,
-    title: "MoneyPrinterTurbo",
-    desc: "AI short video generator. Input tema, AI buat script, material, subtitle, BGM, dan compose video otomatis.",
+    title: "ViralClip AI",
+    desc: "Generate viral short videos in minutes. AI creates script, finds materials, adds subtitles, BGM, and composes professional videos automatically.",
     href: "/mpt",
     target: undefined,
     badge: "New",
