@@ -28,6 +28,8 @@ model User {
   tickets       Ticket[]
   enrollments   Enrollment[]
   blogPosts     BlogPost[]
+  mptApiKeys    MptApiKey[]
+  subscriptions Subscription[]
 }
 
 model Account {
@@ -282,4 +284,112 @@ model ContactMessage {
   message   String
   read      Boolean  @default(false)
   createdAt DateTime @default(now())
+}
+
+// ===== MoneyPrinterTurbo Integration =====
+
+model MptApiKey {
+  id          String   @id @default(cuid())
+  userId      String
+  key         String   @unique
+  label       String   @default("default")
+  active      Boolean  @default(true)
+  quotaUsed   Int      @default(0)
+  quotaLimit  Int      @default(100)
+  expiresAt   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model MptTask {
+  id           String   @id @default(cuid())
+  taskId       String   @unique
+  userId       String?
+  apiKeyId     String?
+  subject      String
+  status       String   @default("pending")
+  progress     Int      @default(0)
+  videos       String?
+  thumbnail    String?
+  script       String?
+  error        String?
+  failedStage  String?
+  videoCount   Int      @default(0)
+  createdAt    DateTime @default(now())
+  completedAt  DateTime?
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum SubscriptionPlan {
+  FREE
+  STARTER
+  PRO
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
+  PENDING
+}
+
+model Subscription {
+  id              String              @id @default(cuid())
+  userId          String
+  plan            SubscriptionPlan    @default(FREE)
+  status          SubscriptionStatus  @default(PENDING)
+  mptQuotaLimit   Int                 @default(10)
+  mptQuotaUsed    Int                 @default(0)
+  mptQuotaResetAt DateTime?
+  startedAt       DateTime?
+  expiresAt       DateTime?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+
+  user   User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  payments Payment[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  REFUNDED
+}
+
+enum PaymentProvider {
+  MIDTRANS
+  MANUAL
+}
+
+model Payment {
+  id              String           @id @default(cuid())
+  subscriptionId  String
+  amount          Float
+  currency        String           @default("IDR")
+  status          PaymentStatus    @default(PENDING)
+  provider        PaymentProvider  @default(MIDTRANS)
+  providerRef     String?
+  providerPayload String?
+  invoiceUrl      String?
+  paidAt          DateTime?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  subscription Subscription @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+
+  @@index([subscriptionId])
+  @@index([status])
 }
