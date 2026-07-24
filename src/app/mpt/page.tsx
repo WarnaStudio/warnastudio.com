@@ -14,48 +14,56 @@ export default function MPTLandingPage() {
       },
       hero: {
         badge: "Versi 2.0 Baru",
-        title: "Generator Video Viral",
-        subtitle: "Dari ide ke video pendek viral dalam hitungan menit — semua otomatis.",
-        cta: "Mulai Gratis",
+        badgeClass: "bg-gradient-to-r from-amber-500 to-amber-600",
+        title: "Bikin Video Viral",
+        subtitle: "Dari ide jadi video pendek viral dalam hitungan menit — semua otomatis, 100% gratis.",
+        cta: "Mulai Sekarang Gratis",
         github: "Lihat di GitHub",
-        features: ["Tanpa Watermark", "100% Gratis", "Proses Lokal"],
+        features: [
+          { icon: "smart_toy", text: "Dibuat dengan AI Canggih" },
+          { icon: "subtitles", text: "Subtitle Karaoke Sync" },
+          { icon: "water_drop", text: "Tanpa Watermark" },
+          { icon: "auto_awesome", text: "50+ Bahasa" },
+          { icon: "edit", text: "Branding Kustom" },
+          { icon: "devices", text: "Multi-Platform" },
+        ],
       },
       features: [
         {
           icon: "smart_toy",
-          title: "Dibuat dengan AI",
-          desc: "Generate script, keywords, dan thumbnail otomatis dengan AI canggih.",
+          title: "AI Generator Script & Material",
+          desc: "Cukup ketik ide, AI otomatis buat script, cari material video, dan thumbnail. Tinggal generate!",
         },
         {
           icon: "subtitles",
-          title: "Subtitle Karaoke",
-          desc: "Subtitle tersinkron dengan voice over dengan efek highlight.",
+          title: "Subtitle Karaoke Otomatis",
+          desc: "Subtitle tersinkron dengan voice over dengan efek highlight. Rapi, profesional, keren.",
         },
         {
           icon: "water_drop",
-          title: "Tanpa Watermark",
-          desc: "Tidak ada watermark. Konten Anda, brand Anda.",
+          title: "100% Gratis & Tanpa Watermark",
+          desc: "Tidak ada biaya hidden. Tidak ada watermark. Konten Anda, branding Anda. Full kontrol.",
         },
         {
           icon: "auto_awesome",
-          title: "50+ Bahasa",
-          desc: "Support 50+ bahasa termasuk Indonesia.",
+          title: "50+ Bahasa Termasuk Indonesia",
+          desc: "Support 50+ bahasa. Cocok untuk konten global, termasuk audience Indonesia.",
         },
         {
           icon: "edit",
           title: "Branding Kustom",
-          desc: "Tambahkan watermark, logo, dan elemen branding sendiri.",
+          desc: "Tambahkan logo WarnaStudio, watermark kustom, dan elemen branding sendiri. Pro!",
         },
         {
           icon: "devices",
-          title: "Multi-Platform",
-          desc: "Optimized untuk TikTok, YouTube Shorts, dan Instagram Reels.",
+          title: "Optimized untuk TikTok, Shorts, Reels",
+          desc: "Format 9:16 portrait. Max resolution 1080p. Siap upload langsung ke semua platform.",
         },
       ],
       steps: [
         { step: 1, title: "Input Ide", desc: "Ketik topik atau keyword video yang ingin dibuat." },
-        { step: 2, title: "AI Generate", desc: "AI buat script, cari material, generate voice over, subtitle, dan BGM." },
-        { step: 3, title: "Generate & Download", desc: "One-click generate video dengan subtitle dan watermark gratis." },
+        { step: 2, title: "AI Generate", desc: "AI buat script, cari material, generate voice over, subtitle, dan BGM. Semua otomatis." },
+        { step: 3, title: "Generate & Download", desc: "One-click generate video dengan subtitle dan watermark gratis. Siap upload ke TikTok, YouTube Shorts, Reels." },
       ],
       stats: [
         { stat: "50+", label: "Bahasa" },
@@ -64,14 +72,14 @@ export default function MPTLandingPage() {
         { stat: "Gratis", label: "Selamanya" },
       ],
       cta: {
-        title: "Siap Membuat Video Viral?",
-        subtitle: "Gabung ribuan konten kreator yang menggunakan AI untuk generate video pendek dalam menit.",
-        button1: "Mulai Gratis",
+        title: "Siap Bikin Video Viral?",
+        subtitle: "Gabung ribuan konten kreator yang menggunakan AI untuk generate video pendek dalam menit. Gratis, tanpa watermark, 100% lokal.",
+        button1: "Mulai Gratis Sekarang",
         button2: "Lihat Dokumentasi",
       },
       footer: {
         product: "ViralClip AI",
-        description: "Generator video pendek berbasis AI untuk konten kreator.",
+        description: "Generator video pendek berbasis AI untuk konten kreator. Bikin video viral dalam menit, 100% gratis, tanpa watermark.",
         productLinks: ["Fitur", "Dokumentasi", "GitHub"],
         companyLinks: ["WarnaStudio", "FAQ"],
         connect: "Terhubung",
@@ -85,48 +93,56 @@ export default function MPTLandingPage() {
       },
       hero: {
         badge: "New Version 2.0",
-        title: "Viral Short Video",
-        subtitle: "From idea to viral short video in minutes — all automated.",
-        cta: "Get Started Free",
+        badgeClass: "bg-gradient-to-r from-violet-500 to-fuchsia-600",
+        title: "Create Viral Videos",
+        subtitle: "From idea to viral short video in minutes — all automated, 100% free, no watermark.",
+        cta: "Start Free Now",
         github: "View on GitHub",
-        features: ["No Watermark", "100% Free", "Local Processing"],
+        features: [
+          { icon: "smart_toy", text: "Powered by Advanced AI" },
+          { icon: "subtitles", text: "Karaoke Subtitle Sync" },
+          { icon: "water_drop", text: "Watermark-Free" },
+          { icon: "auto_awesome", text: "50+ Languages" },
+          { icon: "edit", text: "Custom Branding" },
+          { icon: "devices", text: "Multi-Platform" },
+        ],
       },
       features: [
         {
           icon: "smart_toy",
-          title: "AI-Powered Generation",
-          desc: "Generate scripts, keywords, and thumbnails automatically with advanced AI.",
+          title: "AI Script & Material Generator",
+          desc: "Just type your idea, AI automatically creates script, finds video materials, and thumbnails. Just generate!",
         },
         {
           icon: "subtitles",
-          title: "Karaoke Subtitles",
-          desc: "Synchronized subtitles with highlight effects and voice over.",
+          title: "Automated Karaoke Subtitles",
+          desc: "Synchronized subtitles with highlight effects and voice over. Clean, professional, cool.",
         },
         {
           icon: "water_drop",
-          title: "Watermark-Free",
-          desc: "Completely free of watermarks. Your content, your brand.",
+          title: "100% Free & Watermark-Free",
+          desc: "No hidden costs. No watermark. Your content, your brand. Full control.",
         },
         {
           icon: "auto_awesome",
-          title: "50+ Languages",
-          desc: "Support for 50+ languages including Indonesian.",
+          title: "50+ Languages Including Indonesian",
+          desc: "Support for 50+ languages. Perfect for global content, including Indonesian audience.",
         },
         {
           icon: "edit",
           title: "Custom Branding",
-          desc: "Add custom watermarks, logos, and branding elements.",
+          desc: "Add WarnaStudio logo, custom watermark, and your own branding elements. Pro!",
         },
         {
           icon: "devices",
-          title: "Multi-Platform",
-          desc: "Optimized for TikTok, YouTube Shorts, and Instagram Reels.",
+          title: "Optimized for TikTok, Shorts, Reels",
+          desc: "9:16 portrait format. Max resolution 1080p. Ready to upload directly to all platforms.",
         },
       ],
       steps: [
         { step: 1, title: "Input Idea", desc: "Type a video topic or keyword you want to create content about." },
-        { step: 2, title: "AI Generate", desc: "AI creates script, finds materials, generates voice over, subtitles, and BGM." },
-        { step: 3, title: "Generate & Download", desc: "One-click generate video with subtitles and watermark-free output." },
+        { step: 2, title: "AI Generate", desc: "AI creates script, finds materials, generates voice over, subtitles, and BGM. All automated." },
+        { step: 3, title: "Generate & Download", desc: "One-click generate video with subtitles and watermark-free output. Ready to upload to TikTok, YouTube Shorts, Reels." },
       ],
       stats: [
         { stat: "50+", label: "Languages" },
@@ -136,13 +152,13 @@ export default function MPTLandingPage() {
       ],
       cta: {
         title: "Ready to Create Viral Videos?",
-        subtitle: "Join thousands of content creators using AI to generate short videos in minutes.",
-        button1: "Start Creating Free",
+        subtitle: "Join thousands of content creators using AI to generate short videos in minutes. Free, no watermark, 100% local.",
+        button1: "Start Free Now",
         button2: "View Documentation",
       },
       footer: {
         product: "ViralClip AI",
-        description: "AI-powered short video generator for content creators.",
+        description: "AI-powered short video generator for content creators. Create viral videos in minutes, 100% free, no watermark.",
         productLinks: ["Features", "Documentation", "GitHub"],
         companyLinks: ["WarnaStudio", "FAQ"],
         connect: "Connect",
@@ -191,8 +207,8 @@ export default function MPTLandingPage() {
         <div className="container mx-auto px-6 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20">
-                <span className="text-amber-400 font-medium">{t.hero.badge}</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20">
+                <span className={`text-amber-400 font-medium ${t.hero.badgeClass}`}>{t.hero.badge}</span>
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
               </div>
               <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
@@ -221,13 +237,13 @@ export default function MPTLandingPage() {
                   {t.hero.github}
                 </Link>
               </div>
-              <div className="flex items-center gap-6 text-sm text-slate-400">
+              <div className="flex flex-wrap gap-6 text-sm text-slate-400">
                 {t.hero.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-2">
                     <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>{feature}</span>
+                    <span>{feature.text}</span>
                   </div>
                 ))}
               </div>
